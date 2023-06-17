@@ -24,7 +24,7 @@
   "homepage": "https://github.com/tehkaiyu/multer-s3#readme",
   "dependencies": {
     "file-type": "^3.3.0",
-    "is-svg": "^2.1.0",
+    "is-svg": "^5.0.0",
     "run-parallel": "^1.1.6"
   },
   "devDependencies": {
@@ -32,8 +32,8 @@
     "concat-stream": "^1.5.1",
     "express": "^4.13.1",
     "form-data": "^1.0.0-rc3",
-    "mocha": "^2.2.5",
-    "multer": "^1.1.0",
+    "mocha": "^10.2.0",
+    "multer": "^1.4.4-lts.1",
     "on-finished": "^2.3.0",
     "xtend": "^4.0.1"
   },
