@@ -35,7 +35,7 @@ function autoContentType(req, file, cb) {
 
     if (type) {
       mime = type.mime;
-    } else if (isSvg(firstChunk)) {
+    } else if (isSvg(firstChunk.toString())) {
       mime = "image/svg+xml";
     } else {
       mime = "application/octet-stream";

@@ -1,6 +1,6 @@
 /* eslint-env mocha */
 
-import multerS3 from "../index.js";
+import multerS3, { AUTO_CONTENT_TYPE } from "../index.js";
 
 import fs from "fs";
 import path from "path";
@@ -171,7 +171,7 @@ describe("Multer S3", function () {
       s3: s3,
       bucket: "test",
       serverSideEncryption: "aws:kms",
-      contentType: multerS3.AUTO_CONTENT_TYPE,
+      contentType: AUTO_CONTENT_TYPE,
     });
     var upload = multer({ storage: storage });
     var parser = upload.single("image");
@@ -207,7 +207,7 @@ describe("Multer S3", function () {
       s3: s3,
       bucket: "test",
       serverSideEncryption: "aws:kms",
-      contentType: multerS3.AUTO_CONTENT_TYPE,
+      contentType: AUTO_CONTENT_TYPE,
     });
     var upload = multer({ storage: storage });
     var parser = upload.single("image");
