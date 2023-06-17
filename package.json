@@ -1,6 +1,6 @@
 {
   "name": "multer-s3-transform-2",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Streaming multer storage engine for AWS S3",
   "main": "index.js",
   "type": "module",

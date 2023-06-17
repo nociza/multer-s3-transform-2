@@ -1,26 +1,26 @@
 # Multer S3 Transform 2
 
-As of the time of writing, The original Multer S3 Transform is no longer being maintained. This is a fork of the original Multer S3 Transform, turned into es6 and kept up to date with the latest versions of Multer and S3FS. 
+As of the time of writing, The original Multer S3 Transform is no longer being maintained. This is a fork of the original Multer S3 Transform, turned into es6 and kept up to date with the latest versions of Multer and S3FS without the vulnerable dependencies.
 
 > This is a fork of [Multer S3 Transform](https://github.com/kyh/multer-s3) which is a fork from [Multer S3](https://github.com/badunk/multer-s3), kept up to date, with the added [Transform](https://github.com/tehkaiyu/multer-s3#transforming-files-before-upload) property. 
 
-Streaming multer storage engine for AWS S3.
+Streaming Multer storage engine for AWS S3.
 
 This project is mostly an integration piece for existing code samples from Multer's [storage engine documentation](https://github.com/expressjs/multer/blob/master/StorageEngine.md) with [s3fs](https://github.com/RiptideElements/s3fs) as the substitution piece for file system.  Existing solutions I found required buffering the multipart uploads into the actual filesystem which is difficult to scale.
 
 ## Installation
 
 ```sh
-npm install --save multer-s3-transform
+npm install --save multer-s3-transform-2
 ```
 
 ## Usage
 
 ```javascript
-var aws = require('aws-sdk')
-var express = require('express')
-var multer = require('multer')
-var multerS3 = require('multer-s3-transform')
+import aws from 'aws-sdk';
+import express from 'express';
+import multer from 'multer';
+import multerS3 from 'multer-s3-transform';
 
 var app = express()
 var s3 = new aws.S3({ /* ... */ })
@@ -93,7 +93,7 @@ ACL Option | Permissions added to ACL
 
 ## Setting Metadata
 
-The `metadata` option is a callback that accepts the request and file, and returns a metadata object to be saved to S3.
+The `metadata` option is a callback that accepts the request and file and returns a metadata object to be saved to S3.
 
 Here is an example that stores all fields in the request body as metadata, and uses an `id` param as the key:
 
