@@ -1,16 +1,20 @@
 /* eslint-env mocha */
 
-var multerS3 = require("../");
+import multerS3 from "../index.js";
 
-var fs = require("fs");
-var path = require("path");
-var extend = require("xtend");
-var assert = require("assert");
-var multer = require("multer");
-var stream = require("stream");
-var FormData = require("form-data");
-var onFinished = require("on-finished");
-var mockS3 = require("./util/mock-s3");
+import fs from "fs";
+import path from "path";
+import extend from "xtend";
+import assert from "assert";
+import multer from "multer";
+import stream from "stream";
+import FormData from "form-data";
+import onFinished from "on-finished";
+import mockS3 from "./util/mock-s3.cjs";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 var VALID_OPTIONS = {
   bucket: "string",

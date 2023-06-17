@@ -1,8 +1,8 @@
-var crypto = require("crypto");
-var stream = require("stream");
-var fileType = require("file-type");
-var isSvg = require("is-svg");
-var parallel = require("run-parallel");
+import crypto from "crypto";
+import stream from "stream";
+import fileType from "file-type";
+import isSvg from "is-svg";
+import parallel from "run-parallel";
 
 function staticValue(value) {
   return function (req, file, cb) {
@@ -67,28 +67,28 @@ function collect(storage, req, file, cb) {
     function (err, values) {
       if (err) return cb(err);
 
-      storage.getContentType(req, file, function (
-        err,
-        contentType,
-        replacementStream
-      ) {
-        if (err) return cb(err);
+      storage.getContentType(
+        req,
+        file,
+        function (err, contentType, replacementStream) {
+          if (err) return cb(err);
 
-        cb.call(storage, null, {
-          bucket: values[0],
-          key: values[1],
-          acl: values[2],
-          metadata: values[3],
-          cacheControl: values[4],
-          shouldTransform: values[5],
-          contentDisposition: values[6],
-          storageClass: values[7],
-          contentType: contentType,
-          replacementStream: replacementStream,
-          serverSideEncryption: values[8],
-          sseKmsKeyId: values[9],
-        });
-      });
+          cb.call(storage, null, {
+            bucket: values[0],
+            key: values[1],
+            acl: values[2],
+            metadata: values[3],
+            cacheControl: values[4],
+            shouldTransform: values[5],
+            contentDisposition: values[6],
+            storageClass: values[7],
+            contentType: contentType,
+            replacementStream: replacementStream,
+            serverSideEncryption: values[8],
+            sseKmsKeyId: values[9],
+          });
+        }
+      );
     }
   );
 }
@@ -425,9 +425,9 @@ S3Storage.prototype._removeFile = function (req, file, cb) {
   this.s3.deleteObject({ Bucket: file.bucket, Key: file.key }, cb);
 };
 
-module.exports = function (opts) {
+export default function (opts) {
   return new S3Storage(opts);
-};
+}
 
-module.exports.AUTO_CONTENT_TYPE = autoContentType;
-module.exports.DEFAULT_CONTENT_TYPE = defaultContentType;
+export const AUTO_CONTENT_TYPE = autoContentType;
+export const DEFAULT_CONTENT_TYPE = defaultContentType;
